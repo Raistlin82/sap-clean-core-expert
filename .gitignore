@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# SAP copyrighted full text — NOT redistributed (public repo ships the derived graph only)
+skills/sap-clean-core-expert/knowledge/clean-core-extensibility/raw/
+
+# graphify build intermediates (keep graph.json / graph.curated.json / *.md reports)
+**/graphify-out/.graphify_*
+**/graphify-out/.needs_update
+**/graphify-out/cache/
+**/graphify-out/cost.json
+**/graphify-out/manifest.json
