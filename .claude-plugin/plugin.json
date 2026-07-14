@@ -6,6 +6,9 @@
     "name": "Gabriele Rendina",
     "email": "gabriele@key2.it"
   },
+  "homepage": "https://github.com/Raistlin82/sap-clean-core-expert",
+  "repository": "https://github.com/Raistlin82/sap-clean-core-expert",
+  "license": "MIT",
   "keywords": [
     "sap",
     "clean-core",

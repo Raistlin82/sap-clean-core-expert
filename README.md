@@ -25,13 +25,32 @@ execution on a live tenant, use the companion `sap-erp-clean-core-refactor` skil
 /plugin install sap-clean-core-expert@sap-clean-core-expert-dev
 ```
 
-Restart Claude Code, then just ask a clean-core question — the skill activates on topic. The bundled
-graph is queried via the [`graphify`](https://github.com/safishamsi/graphify) CLI; install it for
-graph-native retrieval (there is a plain-text fallback if it is absent):
+Restart Claude Code, then just ask a clean-core question — the skill activates on topic, or invoke it
+explicitly with the slash command:
+
+```
+/clean-core-ask When should I use Key User extensibility instead of a side-by-side app?
+```
+
+The bundled graph is queried via the [`graphify`](https://github.com/safishamsi/graphify) CLI; install
+it for graph-native retrieval (there is a plain-text fallback if it is absent):
 
 ```bash
 uv tool install graphifyy   # or: pip install graphifyy
 ```
+
+### Install on Claude Desktop / Cowork
+
+Cowork uses the same plugin format, delivered as a single `.plugin` file. Build it from a clone:
+
+```bash
+cd sap-clean-core-expert
+zip -r /tmp/sap-clean-core-expert.plugin . -x '*.DS_Store' -x './.git/*' -x './dist/*' -x '*.plugin'
+```
+
+Then drag the resulting `sap-clean-core-expert.plugin` into a Cowork chat and accept it. A clone of
+this public repo yields the **graph-only** build (no SAP full text); to get full documentary mode,
+add your licensed source under `.../clean-core-extensibility/raw/` before zipping.
 
 ## Usage examples
 
@@ -47,6 +66,8 @@ sap-clean-core-expert/
 ├── .claude-plugin/
 │   ├── plugin.json          # plugin manifest
 │   └── marketplace.json     # dev marketplace (source: ./)
+├── commands/
+│   └── clean-core-ask.md    # /clean-core-ask slash command
 ├── skills/
 │   └── sap-clean-core-expert/
 │       ├── SKILL.md          # expert protocol (retrieve → ground → cite)
@@ -56,6 +77,7 @@ sap-clean-core-expert/
 │           └── clean-core-extensibility/
 │               └── graphify-out/   # graph.curated.json (primary) + graph.json + reports
 │                                   # raw/ (SAP full text) is NOT in this public repo — see below
+├── LICENSE
 └── README.md
 ```
 
@@ -88,4 +110,8 @@ graphify update .                               # re-extract and merge
 
 ## License
 
-Not yet specified — add a `LICENSE` file before public distribution.
+Plugin software (skill definitions, the `/clean-core-ask` command, packaging, docs): **MIT** — see
+[`LICENSE`](LICENSE). The MIT grant does **not** cover the knowledge: the graph under `knowledge/` is
+derived from SAP's copyrighted publication *Clean Core Extensibility for Architects* (2026-07) and is
+provided only to operate this plugin; the source full text is not redistributed here. See the
+knowledge notice in `LICENSE` and the copyright section above.

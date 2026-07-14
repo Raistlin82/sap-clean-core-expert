@@ -4,6 +4,10 @@
 # SAP copyrighted full text — NOT redistributed (public repo ships the derived graph only)
 skills/sap-clean-core-expert/knowledge/clean-core-extensibility/raw/
 
+# Packaged Cowork/Desktop artifacts — these zips bundle raw/ (SAP full text); never publish them
+dist/
+*.plugin
+
 # graphify build intermediates (keep graph.json / graph.curated.json / *.md reports)
 **/graphify-out/.graphify_*
 **/graphify-out/.needs_update
