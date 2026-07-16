@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "sap-clean-core-expert",
-      "description": "Documentary Q&A and advisory expert on SAP S/4HANA Clean Core extensibility, backed by a curated GraphRAG knowledge graph and ~106k words of SAP source docs.",
+      "description": "Documentary Q&A and advisory expert on SAP S/4HANA Clean Core (all five principles, governance/maturity, KPIs), backed by a curated GraphRAG knowledge graph (471 nodes) and ~170k words of SAP source docs.",
       "version": "0.1.0",
       "source": "./",
       "author": {

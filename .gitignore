@@ -3,6 +3,9 @@
 
 # SAP copyrighted full text — NOT redistributed (public repo ships the derived graph only)
 skills/sap-clean-core-expert/knowledge/clean-core-extensibility/raw/
+# Original SAP source binaries (PDF/PPTX) that raw/*.md is derived from — never redistribute
+skills/sap-clean-core-expert/knowledge/clean-core-extensibility/sources/
+skills/sap-clean-core-expert/knowledge/clean-core-extensibility/source/
 
 # Packaged Cowork/Desktop artifacts — these zips bundle raw/ (SAP full text); never publish them
 dist/

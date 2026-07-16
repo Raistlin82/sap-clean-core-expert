@@ -1,7 +1,7 @@
 {
   "name": "sap-clean-core-expert",
   "version": "0.1.0",
-  "description": "Documentary Q&A and advisory expert on SAP S/4HANA Clean Core extensibility. Answers and compares options (Level A/B/C/D, Key User / Developer / side-by-side, wrappers, ABAP Cloud, released APIs, ATC governance, brownfield transition) from a curated ~106k-word SAP knowledge base and a 246-node GraphRAG knowledge graph. Read-only: explains and advises, never writes to a SAP system.",
+  "description": "Documentary Q&A and advisory expert on SAP S/4HANA Clean Core — all five principles (Business Processes, Extensibility, Data, Integration, Operations), governance/maturity, and KPIs. Answers and compares options (Level A/B/C/D, Key User / Developer / side-by-side, wrappers, ABAP Cloud, released APIs, ATC governance, maturity scoring, data/integration/operations practices, brownfield transition) from a curated ~170k-word SAP knowledge base and a 471-node GraphRAG knowledge graph. Read-only: explains and advises, never writes to a SAP system.",
   "author": {
     "name": "Gabriele Rendina",
     "email": "gabriele@key2.it"

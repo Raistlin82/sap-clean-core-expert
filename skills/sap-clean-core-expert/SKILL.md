@@ -1,14 +1,15 @@
 ---
 name: sap-clean-core-expert
-description: Use when the user asks a question or wants advice about SAP S/4HANA Clean Core extensibility — clean-core principles, Level A/B/C/D classification, Key User vs Developer vs side-by-side extensibility, released APIs and wrappers, the ABAP Cloud development model, ATC / clean-core governance and KPIs, brownfield transition, or SAP Business AI (Joule) for custom code. Answers, explains and compares options from a curated SAP knowledge base and a GraphRAG knowledge graph, always citing sources. Documentary and advisory only — read-only, never modifies a SAP system.
+description: Use when the user asks a question or wants advice about SAP S/4HANA Clean Core — any of the five principles (Business Processes, Extensibility, Data, Integration, Operations), the governance & maturity scoring model, or the KPI measurement framework. Covers clean-core principles, Level A/B/C/D classification, Key User vs Developer vs side-by-side extensibility, released APIs and wrappers, the ABAP Cloud development model, ATC / clean-core governance and KPIs, data strategy/quality/volume, integration and operations practices, brownfield transition, and SAP Business AI (Joule) for custom code. Answers, explains and compares options from a curated SAP knowledge base and a GraphRAG knowledge graph, always citing sources. Documentary and advisory only — read-only, never modifies a SAP system.
 ---
 
 # SAP Clean Core Expert (Documentary)
 
-A read-only subject-matter expert on **SAP Clean Core extensibility**. It answers questions,
-explains concepts, and compares extensibility options by retrieving from a bundled knowledge base:
-a **GraphRAG knowledge graph** (246 nodes, 371 edges, 19 communities) plus **~106,000 words** of
-SAP source documents. Every answer is grounded in and cites that corpus.
+A read-only subject-matter expert on **SAP Clean Core** — all five principles (Business Processes,
+Extensibility, Data, Integration, Operations), plus governance/maturity and KPI measurement. It
+answers questions, explains concepts, and compares options by retrieving from a bundled knowledge
+base: a **GraphRAG knowledge graph** (471 nodes, 931 edges, 24 communities) plus **~170,000 words**
+of SAP source documents. Every answer is grounded in and cites that corpus.
 
 This expert **explains and advises**. It does **not** plan or execute changes on a live SAP system.
 For evidence-gated planning and guarded execution (ARC-1 writes, ATC runs, transport release), that
@@ -39,14 +40,16 @@ Bundled inside this skill under `knowledge/clean-core-extensibility/`:
 
 | Artifact | What it is |
 |---|---|
-| `graphify-out/graph.curated.json` | **Primary.** Alias-merged graph, curated bridges, no isolated nodes (246 nodes / 371 edges). |
-| `graphify-out/graph.json` | Immutable original Graphify extraction (251 / 369). Use only to cross-check. |
+| `graphify-out/graph.curated.json` | **Primary.** Alias-merged graph, curated bridges, no isolated nodes (471 nodes / 931 edges). |
+| `graphify-out/graph.json` | Merged Graphify extraction (476 / 930). Use only to cross-check. |
 | `graphify-out/GRAPH_REPORT.md` | Audit report: communities, god nodes, hyperedges, knowledge gaps. |
-| `graphify-out/CURATION.md` | What the curated bridges are and why (they are `confidence=CURATED`). |
-| `raw/*.md` | 38 source documents (SAP clean-core guidance, PDF-derived, ~106k words). **Optional — NOT bundled in the public GitHub distribution for copyright reasons; present in private/full installs.** |
+| `graphify-out/CURATION.md` | The cross-agent concept dedup, the curated bridges, and the alias merges (bridges are `confidence=CURATED`). |
+| `raw/*.md` | 51 source documents (SAP clean-core guidance, PDF/PPTX-derived, ~170k words). **Optional — NOT bundled in the public GitHub distribution for copyright reasons; present in private/full installs.** |
 
-Provenance: SAP publication *Clean Core Extensibility for Architects*, corpus dated **2026-07**. Treat
-it as the source of truth for *SAP's documented position*, not as live product state. See
+Provenance: SAP sources dated **2026-07** — *Clean Core Extensibility for Architects* (PDF), the Clean
+Core **L200** deck, the **Governance & Operational Practices Maturity** deck, the **Measurement
+Criteria for Clean Core KPIs** deck, and the **SAP SE Clean Core Data** white paper. Treat the corpus
+as the source of truth for *SAP's documented position*, not as live product state. See
 `references/knowledge-map.md` for the community map, god nodes, and a topic index of the source
 documents.
 
@@ -94,15 +97,17 @@ Tips:
 
 ### 2. Ground the answer
 
-Query/explain output cites each node's `src=raw/<file>.md loc=PDF page N` plus `source_url` (the SAP
-publication *Clean Core Extensibility for Architects*, 2026-07).
+Query/explain output cites each node's `src=raw/<file>.md loc=<PDF page N | Slide N>` plus
+`source_url` (the SAP source the chunk came from — the extensibility PDF, one of the 2026-07 decks, or
+the Data white paper). Deck-derived nodes cite **Slide N**; PDF-derived nodes cite **PDF page N**.
 
 - **If `HAS_RAW=yes`** (full text present, e.g. private/full install): **open the cited `raw/*.md`
   file(s)** and read the passage so the answer reflects the actual wording. Full *documentary* mode.
 - **If `HAS_RAW=no`** (public distribution — SAP full text not bundled): work from the graph structure
-  (labels, relations, communities) and **cite the SAP publication by page** — e.g. *"SAP, Clean Core
-  Extensibility for Architects (2026-07), PDF p.52"*. Do **not** fabricate quotations you cannot see;
-  explain the concept and its relationships and point the user to the cited SAP page.
+  (labels, relations, communities) and **cite the SAP source by page/slide** — e.g. *"SAP, Clean Core
+  Extensibility for Architects (2026-07), PDF p.52"* or *"SAP, Measurement Criteria for Clean Core KPIs
+  (2026-07), slide 34"*. Do **not** fabricate quotations you cannot see; explain the concept and its
+  relationships and point the user to the cited SAP page/slide.
 
 ### 3. Synthesize and cite
 
