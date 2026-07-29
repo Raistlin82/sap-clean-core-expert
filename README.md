@@ -3,7 +3,7 @@
 A Claude Code **plugin** that turns a curated SAP Clean Core knowledge base into a documentary,
 read-only subject-matter expert. Ask it questions about SAP S/4HANA Clean Core — all five principles
 (Business Processes, Extensibility, Data, Integration, Operations), governance/maturity, and KPIs — and
-it answers from a **GraphRAG knowledge graph** (471 nodes / 931 edges / 24 communities) plus **~170,000
+it answers from a **GraphRAG knowledge graph** (471 nodes / 931 edges / 14 communities) plus **~170,000
 words** of SAP source documents — always citing its sources.
 
 It **explains and advises**. It never modifies a SAP system. For evidence-gated planning and guarded
@@ -26,7 +26,7 @@ execution on a live tenant, use the companion `sap-erp-clean-core-refactor` skil
 ## Install (local / development)
 
 ```bash
-/plugin marketplace add /Users/gabriele.rendina/tools/sap-clean-core-expert
+/plugin marketplace add /path/to/sap-clean-core-expert   # the directory of your clone
 /plugin install sap-clean-core-expert@sap-clean-core-expert-dev
 ```
 
@@ -50,7 +50,10 @@ Cowork uses the same plugin format, delivered as a single `.plugin` file. Build 
 
 ```bash
 cd sap-clean-core-expert
-zip -r /tmp/sap-clean-core-expert.plugin . -x '*.DS_Store' -x './.git/*' -x './dist/*' -x '*.plugin' -x '*/clean-core-extensibility/sources/*'
+zip -r /tmp/sap-clean-core-expert.plugin . -x '*.DS_Store' -x './.git/*' -x './dist/*' -x '*.plugin' \
+  -x '*/clean-core-extensibility/sources/*' -x './.claude.local.md' \
+  -x '*/graphify-out/.graphify_*' -x '*/graphify-out/.needs_update' -x '*/graphify-out/cache/*' \
+  -x '*/graphify-out/cost.json' -x '*/graphify-out/manifest.json'
 ```
 
 Then drag the resulting `sap-clean-core-expert.plugin` into a Cowork chat and accept it. A clone of

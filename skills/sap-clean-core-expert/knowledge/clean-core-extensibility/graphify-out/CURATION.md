@@ -41,4 +41,25 @@ Three curated bridges connect otherwise weakly-linked high-level concepts:
 - `sap_cloud_erp_private_advisory` -[supports]-> `clean_core_extensibility_governance`
 
 The bridges are marked `confidence=CURATED` and never authorize execution. Finally, zero-degree nodes
-are pruned (5 → 0). Runtime decisions use `decision-rules.json` plus live evidence, not these edges.
+are pruned (5 → 0). These three edges are interpretation, not source text: cite them as such, and never
+let them stand in for a documented SAP statement.
+
+## Reading `GRAPH_REPORT.md` against the curated graph
+
+The report is generated from `graph.json`; three figures do **not** carry over to `graph.curated.json`:
+
+| Report says | Curated reality |
+|---|---|
+| 24 communities, numbered 0–23 | **14** communities, **renumbered** — never resolve a `community=N` tag through the report (use `references/knowledge-map.md`) |
+| 904 edges | 930 links in `graph.json`, **931** in curated (904 is a same-endpoint collapsed count) |
+| 142 isolated nodes (≤1 connection) | 0 *zero-degree* nodes; degree-1 nodes still exist — different definitions, not a contradiction |
+
+Link confidence in curated: 848 `EXTRACTED` · 80 `INFERRED` · 3 `CURATED`.
+
+Metadata note (normalized in v0.2.0): `source_url` used to read `source/…` (singular) on the 246
+extensibility-PDF nodes and `sources/…` on the other 225. All 471 curated nodes — and all 51 `raw/*.md`
+frontmatter headers — now use `sources/…` consistently. The replacement was an exact quoted-string
+substitution: node/link/hyperedge counts (471 / 931 / 35) and the full link set are byte-for-byte
+unchanged. `graph.json` deliberately still carries the old `source/…` spelling, because this repo forbids
+hand-editing it; it will re-align on the next graphify extraction. Note the CLI never prints this field,
+so nothing user-visible depended on it either way.

@@ -1,6 +1,9 @@
 # macOS
 .DS_Store
 
+# Personal/local Claude Code notes — never redistribute
+.claude.local.md
+
 # SAP copyrighted full text — NOT redistributed (public repo ships the derived graph only)
 skills/sap-clean-core-expert/knowledge/clean-core-extensibility/raw/
 # Original SAP source binaries (PDF/PPTX) that raw/*.md is derived from — never redistribute

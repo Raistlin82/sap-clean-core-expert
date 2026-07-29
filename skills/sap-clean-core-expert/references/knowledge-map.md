@@ -9,7 +9,9 @@ framework (added 2026-07 from the L200, Governance & Maturity, KPI, and Data whi
 
 ## God nodes (most connected — the core abstractions)
 
-Start here for broad questions; these bridge multiple communities. (Degree in the curated graph.)
+Start here for broad questions; these bridge multiple communities. (Degree in the curated graph —
+verified against `graph.curated.json`; `GRAPH_REPORT.md` lists slightly lower degrees because it
+describes `graph.json`.) All labels in this file are verified to exist as exact node labels.
 
 | Node | Edges | Use it for |
 |---|---:|---|
@@ -28,29 +30,35 @@ Start here for broad questions; these bridge multiple communities. (Degree in th
 | `Technical Debt Score` | 15 | Custom-code debt KPI, ATC-driven measurement |
 | `Clean Core Level A` | 14 | The compliant target level and its patterns |
 
-## Communities (24; hubs to navigate by theme)
+## Communities — use the **curated** numbering (14 communities)
 
-0. **Extensibility Governance & ATC Measurement** — ATC, Clean Core Share, Technical Debt Score, usage data (66 nodes)
-1. **Extensibility Model & Levels** — Levels A/B/C/D, ABAP Cloud, side-by-side, SAP Build (62)
-2. **Clean Integration** — clean interface technologies, SAP Integration Suite, monitoring coverage (52)
-3. **Clean Business Processes & Toolchain** — fit-to-standard, Cloud ALM, integrated toolchain, agile delivery (51)
-4. **Governance & Maturity Scoring** — governance model, Maturity Rating Scale, measurement framework, RISE dashboard (38)
-5. **Data Volume & Protection** — data volume efficiency/improvement, ILM, tiering, data protection (32)
-6. **Key User Extensibility Toolset** — Custom Fields/Logic/Objects/CDS/Analytical apps, Extensibility Cockpit (29)
-7. **Clean Operations** — stack currency (FPS/SPS age), EarlyWatch, secure baseline, test management (29)
-8. **AI Custom-Code Modernization** — Custom Code Migration Agent, Joule Studio, AI fix proposals (24)
-9. **Brownfield Debt Reduction** — technical-debt reduction, retire/renovate/innovate, Fiori adoption (17)
-10. **Data Strategy & Products** — SAP Business Data Cloud, data products, democratization, One Domain Model (15)
-11. **Master Data & Data Quality** — Master Data Governance/Management, get/keep data clean (14)
-12. **Data Governance** — data governance board, DAT practices, metadata, data catalog (9)
-13. **Application Extension Methodology (AEM)** — assess use case / technology / target solution (8)
-14. **Clean Data Foundation & AI** — clean-data foundation, Applications-Data-AI flywheel, Business AI (6)
-15. **Data Quality Management** — profiling, standardization, cleansing, Information Steward (6)
-16. **Governance Boards** — Solution Standardization Board, SSB review, steering committee (6)
-17. **Data Quality Index** — Data Quality Index and its FI / Business Partner / Material Master components (5)
+> ⚠️ **Two different numberings exist. Use this table, not `GRAPH_REPORT.md`'s.**
+> The `community=N` tag printed by `graphify query`/`explain` comes from `graph.curated.json` (the graph
+> the skill queries), which has **14** communities. `GRAPH_REPORT.md` describes `graph.json` and its
+> **24** communities under *different numbers* — e.g. curated `community=1` is **Clean Core Data**, while
+> `GRAPH_REPORT`'s community 1 is "Extensibility Model & Levels". Never translate a `community=N` tag
+> through the report.
 
-Thin hubs (1–2 nodes) also present: Business AI Advisory, Released Extension Points, Discovery Center
-Missions, Joule ABAP Capabilities, RAP Model, Cloud ERP Private Advisory.
+| N | Theme (curated) | Nodes | Highest-degree members |
+|---:|---|---:|---|
+| 0 | **Extensibility Governance & ATC Measurement** | 69 | Clean Core Extensibility, ABAP Test Cockpit, Clean Core Extensibility Governance, Technical Debt Score, RISE with SAP Methodology Dashboard |
+| 1 | **Clean Core Data — volume, products, indices** | 58 | Clean Core Data, SAP Business Data Cloud, Data Volume Efficiency, Data Volume Improvement Potential, Data Quality Index |
+| 2 | **Extensibility Model & Levels A/B/C/D** | 58 | Side-by-Side Extensibility, Clean Core Level A, SAP Build, Clean Core Level B, Clean Core Level C |
+| 3 | **Clean Business Processes & Toolchain** | 51 | Clean Core Business Processes, SAP Cloud ALM, End-to-End Toolchain, agile delivery / operational excellence |
+| 4 | **Clean Integration** | 42 | Clean Core Integration, SAP BTP, SAP Integration Suite, SAP Readiness Check, Usage of Clean Interface Technologies |
+| 5 | **Governance & Maturity Scoring** | 37 | Governance and Maturity, Clean Core Measurement Framework, RISE with SAP Methodology, Solution Standardization Board, Clean Core Maturity Rating Scale |
+| 6 | **Brownfield Debt Reduction & AI Custom-Code Modernization** | 30 | Technical Debt Reduction, S/4HANA Custom Code Migration Agent, SAP Fiori Adoption, Post-Conversion Retire/Renovate/Innovate, Joule Studio |
+| 7 | **Released APIs, AEM & Extension Process** | 30 | Released SAP APIs, Extension End-to-End Process, Extension Deployment, SAP Application Extension Methodology, EXT-GOV-02 |
+| 8 | **Key User Extensibility Toolset** | 29 | Custom Fields App, Custom CDS Views App, OData Services, Core Data Services, Custom Business Objects App |
+| 9 | **Clean Operations** | 29 | Clean Core Operations, SAP S/4HANA Cloud, Age of Feature Pack Stack, Age of Support Package Stack, SAP Early Watch Alert |
+| 10 | **Data Quality & Clean Data Foundation / AI** | 24 | Data Quality, Clean Core Data Foundation, Data Quality Management, SAP Business AI, Custom Code Assistant |
+| 11 | **UI Extension Building Blocks** | 7 | Create Custom UI Extension Task, Extension Architecture Guide, SAP Fiori Elements, SAPUI5, SAP Mobile Services |
+| 12 | **Data Tiering & Temperature** | 5 | Data Tiering, Hot / Warm / Cold Data, SAP HANA Native Storage Extension |
+| 13 | **Business AI Advisory** | 2 | SAP Business AI Advisory, SAP Business AI Activation Advisory |
+
+Sizes total 471 ✓. `GRAPH_REPORT.md`'s finer 24-community split (incl. thin hubs like Data Governance,
+Governance Boards, Data Quality Index, RAP Model) is still useful as a **thematic** inventory — just not
+for resolving a `community=N` tag.
 
 ## Hyperedges (multi-node patterns — cite these for "how does the whole X work")
 
@@ -70,7 +78,7 @@ Missions, Joule ABAP Capabilities, RAP Model, Cloud ERP Private Advisory.
 - **Clean Core Level Model Forms A/B/C/D** — the level concept + all four levels
 - **Level A Clean Extension Pattern** — Level A + ABAP Cloud model + SAP Build + Released APIs + on-stack + side-by-side
 - **Wrapper Access Pattern for Non-Released Objects** — wrappers + non-released objects + ATC exemptions + levels B/C/D
-- **On-Stack / Side-by-Side Selection Pattern** — decision tree + on-stack + side-by-side + Key User + Developer
+- **On-Stack Side-by-Side Selection Pattern** — decision tree + on-stack + side-by-side + Key User + Developer
 - **SAP AEM Three Phase Pattern** — assess use case → assess technology → define target solution
 - **Clean Core Governance and System Setup Pattern** — measurement framework + KPIs + the EXT-SYS-01..05 setup steps
 - **Clean Extensibility Level ATC Mapping** — levels A/B/C/D ↔ ATC checks

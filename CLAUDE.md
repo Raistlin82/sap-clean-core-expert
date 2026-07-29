@@ -18,7 +18,10 @@ Install locally for development (inside a Claude Code session):
 Package for Claude Desktop / Cowork (single `.plugin` zip; the artifact bundles `raw/` when present, so never publish it). Exclude `sources/` — the original SAP binaries are large and unneeded in the plugin (the `raw/*.md` chunks carry the full text):
 
 ```bash
-zip -r dist/sap-clean-core-expert.plugin . -x '*.DS_Store' -x './.git/*' -x './dist/*' -x '*.plugin' -x '*/clean-core-extensibility/sources/*'
+zip -r dist/sap-clean-core-expert.plugin . -x '*.DS_Store' -x './.git/*' -x './dist/*' -x '*.plugin' \
+  -x '*/clean-core-extensibility/sources/*' -x './.claude.local.md' \
+  -x '*/graphify-out/.graphify_*' -x '*/graphify-out/.needs_update' -x '*/graphify-out/cache/*' \
+  -x '*/graphify-out/cost.json' -x '*/graphify-out/manifest.json'
 ```
 
 Query the knowledge graph directly (the skill's retrieval engine; install with `uv tool install graphifyy` or `pip install graphifyy`):
@@ -62,4 +65,7 @@ The public repo ships **only the derived graph**. SAP's copyrighted full text (`
 
 - The expert is strictly **read-only / advisory**. It explains and compares; it never plans or executes changes on a live SAP system — that is handed off to the companion `sap-erp-clean-core-refactor` skill. Preserve this framing in any edit to `SKILL.md` or the command.
 - Every answer must cite its source (node → `src=raw/<file>.md loc=PDF page N`), and edge-confidence labels (`EXTRACTED` vs `INFERRED`/`CURATED`) are part of the honesty contract in `SKILL.md`.
-- Graph statistics (471 nodes / 931 edges / 24 communities, ~170k words, 51 source docs) are repeated across `README.md`, `plugin.json`, `marketplace.json`, `SKILL.md`, `knowledge-map.md`, and `graphify-out/CURATION.md` — if the graph is rebuilt, update all of them together. (Convention: node/edge counts are the curated graph; the community count is the `GRAPH_REPORT.md` figure from `graph.json`.)
+- Graph statistics (471 nodes / 931 edges / 14 communities, ~170k words, 51 source docs) are repeated across `README.md`, `plugin.json`, `marketplace.json`, `SKILL.md`, `knowledge-map.md`, and `graphify-out/CURATION.md` — if the graph is rebuilt, update all of them together. (Convention: **every** published figure describes the curated graph. `graph.json`'s numbers — 476 / 930 / 24 communities — appear only where explicitly attributed to it.)
+  Get the authoritative curated counts with: `python3 -c "import json;d=json.load(open('$GRAPH'));print(len(d['nodes']),len(d['links']))"` — the graph is node-link JSON (`nodes` + `links` + `hyperedges`); edges live under `links`, not `edges`. (`GRAPH_REPORT.md` reports its own third figure, 904 edges — don't propagate it.)
+- **Two community numberings — the sharpest trap in this repo.** `graph.curated.json` (what the skill queries) has **14** communities; `graph.json` / `GRAPH_REPORT.md` have **24**, numbered differently (curated `community=1` is Clean Core Data; the report's 1 is "Extensibility Model & Levels"). A `community=N` tag from `graphify` must be resolved *only* through the curated table in `references/knowledge-map.md`. The external copy (`README.md`, `plugin.json`, `marketplace.json`) quotes 24 as a corpus-breadth figure; `SKILL.md` states both.
+- **The CLI does not print `source_url`** even though every node carries it — cite the `src=raw/<chunk>.md` name instead. `graphify --help` also omits `query` and `affected`, which nonetheless exist and work; don't delete them from `SKILL.md`.

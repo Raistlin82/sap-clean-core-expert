@@ -8,8 +8,9 @@ description: Use when the user asks a question or wants advice about SAP S/4HANA
 A read-only subject-matter expert on **SAP Clean Core** — all five principles (Business Processes,
 Extensibility, Data, Integration, Operations), plus governance/maturity and KPI measurement. It
 answers questions, explains concepts, and compares options by retrieving from a bundled knowledge
-base: a **GraphRAG knowledge graph** (471 nodes, 931 edges, 24 communities) plus **~170,000 words**
-of SAP source documents. Every answer is grounded in and cites that corpus.
+base: a **GraphRAG knowledge graph** (471 nodes, 931 edges, 14 curated communities / 24 in the
+un-curated cross-check graph) plus **~170,000 words** of SAP source documents. Every answer is grounded
+in and cites that corpus.
 
 This expert **explains and advises**. It does **not** plan or execute changes on a live SAP system.
 For evidence-gated planning and guarded execution (ARC-1 writes, ATC runs, transport release), that
@@ -40,9 +41,9 @@ Bundled inside this skill under `knowledge/clean-core-extensibility/`:
 
 | Artifact | What it is |
 |---|---|
-| `graphify-out/graph.curated.json` | **Primary.** Alias-merged graph, curated bridges, no isolated nodes (471 nodes / 931 edges). |
+| `graphify-out/graph.curated.json` | **Primary — always query this one.** Alias-merged, curated bridges, no zero-degree nodes (471 nodes / 931 edges / 35 hyperedges / 14 communities). |
 | `graphify-out/graph.json` | Merged Graphify extraction (476 / 930). Use only to cross-check. |
-| `graphify-out/GRAPH_REPORT.md` | Audit report: communities, god nodes, hyperedges, knowledge gaps. |
+| `graphify-out/GRAPH_REPORT.md` | Audit report on **`graph.json`**, not the curated graph: communities (24, differently numbered), god nodes (lower degrees), hyperedges, knowledge gaps. Its edge total (904) is a collapsed count — the file has 930 links. |
 | `graphify-out/CURATION.md` | The cross-agent concept dedup, the curated bridges, and the alias merges (bridges are `confidence=CURATED`). |
 | `raw/*.md` | 51 source documents (SAP clean-core guidance, PDF/PPTX-derived, ~170k words). **Optional — NOT bundled in the public GitHub distribution for copyright reasons; present in private/full installs.** |
 
@@ -90,16 +91,30 @@ echo "raw full text: $HAS_RAW"
 | What depends on / is impacted by a concept | `graphify affected "<Node>" --graph "$GRAPH"` |
 
 Tips:
+- **`--graph` is mandatory, never optional.** Omitting it silently defaults to
+  `graphify-out/graph.json` — the un-curated cross-check graph, not the primary artifact.
 - `query` matches start nodes by keyword and can pick imprecise anchors. When the concept maps to a
   known node, prefer `explain` with the **exact label** from `references/knowledge-map.md`.
-- Increase `--budget` for broad questions; the default (2000) truncates large neighbourhoods.
-- Note the `community=N` tag on nodes — crossing communities is often where the insight is.
+- Increase `--budget` for broad questions; the default (2000) truncates large neighbourhoods. Output
+  says so explicitly (`[!] TRUNCATED: showing N of M nodes`) — if you see it and the answer may be in
+  the cut nodes, re-run with a larger budget instead of answering from the partial set.
+- Note the `community=N` tag on nodes — crossing communities is often where the insight is. Resolve N
+  with the **curated** community table in `references/knowledge-map.md`; do **not** use
+  `GRAPH_REPORT.md`, which numbers the *other* graph's 24 communities differently.
+- **CLI gotcha:** `graphify --help` omits `query` and `affected`, but both exist and work (verified on
+  0.9.29). Don't "fix" this skill by deleting them.
 
 ### 2. Ground the answer
 
-Query/explain output cites each node's `src=raw/<file>.md loc=<PDF page N | Slide N>` plus
-`source_url` (the SAP source the chunk came from — the extensibility PDF, one of the 2026-07 decks, or
-the Data white paper). Deck-derived nodes cite **Slide N**; PDF-derived nodes cite **PDF page N**.
+Query output prints `NODE <Label> [src=raw/<file>.md loc=<PDF page N | Slide N> community=N]`;
+`explain` prints the same as `Source:` / `Community:` / `Degree:` lines. Deck-derived nodes cite
+**Slide N**; PDF-derived nodes cite **PDF page N**.
+
+The `src=` chunk name is what you cite. (Each node also carries a `source_url` field naming the
+original SAP file, but **the CLI does not print it** — read it from the JSON if you ever need it. Map
+chunk prefixes to publications with the source-document index in `references/knowledge-map.md`:
+unprefixed = the extensibility PDF, `l200-` / `govops-` / `kpi-` = the 2026-07 decks, `wp-` = the Data
+white paper.)
 
 - **If `HAS_RAW=yes`** (full text present, e.g. private/full install): **open the cited `raw/*.md`
   file(s)** and read the passage so the answer reflects the actual wording. Full *documentary* mode.
@@ -122,7 +137,8 @@ the Data white paper). Deck-derived nodes cite **Slide N**; PDF-derived nodes ci
 ### Fallback — no graphify CLI
 
 If `graphify` is not installed, work directly from the corpus:
-- Read `graphify-out/GRAPH_REPORT.md` for structure (communities, god nodes, hyperedges).
+- Read `graphify-out/GRAPH_REPORT.md` for structure (communities, god nodes, hyperedges) — remembering
+  it describes `graph.json`, so its community numbers and degrees don't match the curated graph.
 - If `HAS_RAW=yes`, grep the source docs: `grep -rl "<term>" "$KB/raw"` then read the matches.
 - Cite the same way. Offer to install graphify (`uv tool install graphifyy` or `pip install graphifyy`)
   for graph-native retrieval.
