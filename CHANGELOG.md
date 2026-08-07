@@ -1,8 +1,29 @@
 # Changelog
 
-All notable changes to the SAP Clean Core Expert plugin. The knowledge corpus itself is unchanged
-since 0.1.0 (SAP sources dated 2026-07, 51 documents, ~170k words); these releases correct how the
-skill *reads and cites* that corpus.
+All notable changes to the SAP Clean Core Expert plugin.
+
+## 0.3.0 — Clean Core Integration white paper
+
+### Added
+
+- Ingested the SAP **Clean core integration** white paper (49 pages) as the Integration principle's
+  dedicated source: chunked to `raw/int-001-025…` / `raw/int-026-049…`, extracted by two graphify
+  agents instructed to reuse existing labels, and merged into the graph.
+- ~60 net-new integration concepts — the three architecture patterns (central middleware / API-managed
+  connectivity / event-driven), API contracts (C0–C2), clean-integration principles (loose coupling,
+  API-first, secure-by-design), integration governance (ISA-M, ICoE, SSB, decision logging), the
+  agent-led toolchain, and legacy-interface modernization (IDoc/RFC/SOAP → API-managed).
+- `Clean Core Integration` is now the graph's most-connected god node (64 edges).
+
+### Changed
+
+- Graph grew — curated **471 → 530 nodes / 931 → 1042 links / 14 → 30 communities / 35 → 41 hyperedges**
+  (raw `graph.json` 476 → 536 / 930 → 1041 / 24 → 32). Corpus 51 → **53 documents**, ~170k → **~185k
+  words**, across **6** SAP source publications. Link confidence: 915 EXTRACTED · 124 INFERRED · 3 CURATED.
+- Curation gained a sixth alias merge (`cloud_integration` → `sap_cloud_integration`); the five prior
+  merges and the three `CURATED` bridges are unchanged, and zero-degree nodes remain 0.
+- All published figures updated across `README.md`, `plugin.json`, `marketplace.json`, `SKILL.md`,
+  `references/knowledge-map.md`, `CURATION.md`, `GRAPH_REPORT.md`, and this file.
 
 ## 0.2.0 — accuracy audit
 

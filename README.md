@@ -3,7 +3,7 @@
 A Claude Code **plugin** that turns a curated SAP Clean Core knowledge base into a documentary,
 read-only subject-matter expert. Ask it questions about SAP S/4HANA Clean Core — all five principles
 (Business Processes, Extensibility, Data, Integration, Operations), governance/maturity, and KPIs — and
-it answers from a **GraphRAG knowledge graph** (471 nodes / 931 edges / 14 communities) plus **~170,000
+it answers from a **GraphRAG knowledge graph** (530 nodes / 1042 edges / 30 communities) plus **~185,000
 words** of SAP source documents — always citing its sources.
 
 It **explains and advises**. It never modifies a SAP system. For evidence-gated planning and guarded

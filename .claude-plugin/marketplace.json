@@ -8,8 +8,8 @@
   "plugins": [
     {
       "name": "sap-clean-core-expert",
-      "description": "Documentary Q&A and advisory expert on SAP S/4HANA Clean Core (all five principles, governance/maturity, KPIs), backed by a curated GraphRAG knowledge graph (471 nodes) and ~170k words of SAP source docs.",
-      "version": "0.2.0",
+      "description": "Documentary Q&A and advisory expert on SAP S/4HANA Clean Core (all five principles, governance/maturity, KPIs), backed by a curated GraphRAG knowledge graph (530 nodes) and ~185k words of SAP source docs.",
+      "version": "0.3.0",
       "source": "./",
       "author": {
         "name": "Gabriele Rendina"

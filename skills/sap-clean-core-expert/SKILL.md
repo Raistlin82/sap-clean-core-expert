@@ -8,8 +8,8 @@ description: Use when the user asks a question or wants advice about SAP S/4HANA
 A read-only subject-matter expert on **SAP Clean Core** — all five principles (Business Processes,
 Extensibility, Data, Integration, Operations), plus governance/maturity and KPI measurement. It
 answers questions, explains concepts, and compares options by retrieving from a bundled knowledge
-base: a **GraphRAG knowledge graph** (471 nodes, 931 edges, 14 curated communities / 24 in the
-un-curated cross-check graph) plus **~170,000 words** of SAP source documents. Every answer is grounded
+base: a **GraphRAG knowledge graph** (530 nodes, 1042 edges, 30 curated communities / 32 in the
+un-curated cross-check graph) plus **~185,000 words** of SAP source documents. Every answer is grounded
 in and cites that corpus.
 
 This expert **explains and advises**. It does **not** plan or execute changes on a live SAP system.
@@ -41,15 +41,16 @@ Bundled inside this skill under `knowledge/clean-core-extensibility/`:
 
 | Artifact | What it is |
 |---|---|
-| `graphify-out/graph.curated.json` | **Primary — always query this one.** Alias-merged, curated bridges, no zero-degree nodes (471 nodes / 931 edges / 35 hyperedges / 14 communities). |
-| `graphify-out/graph.json` | Merged Graphify extraction (476 / 930). Use only to cross-check. |
-| `graphify-out/GRAPH_REPORT.md` | Audit report on **`graph.json`**, not the curated graph: communities (24, differently numbered), god nodes (lower degrees), hyperedges, knowledge gaps. Its edge total (904) is a collapsed count — the file has 930 links. |
+| `graphify-out/graph.curated.json` | **Primary — always query this one.** Alias-merged, curated bridges, no zero-degree nodes (530 nodes / 1042 edges / 41 hyperedges / 30 communities). |
+| `graphify-out/graph.json` | Merged Graphify extraction (536 / 1041). Use only to cross-check. |
+| `graphify-out/GRAPH_REPORT.md` | Audit report on **`graph.json`**, not the curated graph: communities (32, differently numbered), god nodes (lower degrees), hyperedges, knowledge gaps. |
 | `graphify-out/CURATION.md` | The cross-agent concept dedup, the curated bridges, and the alias merges (bridges are `confidence=CURATED`). |
-| `raw/*.md` | 51 source documents (SAP clean-core guidance, PDF/PPTX-derived, ~170k words). **Optional — NOT bundled in the public GitHub distribution for copyright reasons; present in private/full installs.** |
+| `raw/*.md` | 53 source documents (SAP clean-core guidance, PDF/PPTX-derived, ~185k words). **Optional — NOT bundled in the public GitHub distribution for copyright reasons; present in private/full installs.** |
 
-Provenance: SAP sources dated **2026-07** — *Clean Core Extensibility for Architects* (PDF), the Clean
+Provenance: SAP sources dated **2026-07/08** — *Clean Core Extensibility for Architects* (PDF), the Clean
 Core **L200** deck, the **Governance & Operational Practices Maturity** deck, the **Measurement
-Criteria for Clean Core KPIs** deck, and the **SAP SE Clean Core Data** white paper. Treat the corpus
+Criteria for Clean Core KPIs** deck, the **SAP SE Clean Core Data** white paper, and the **Clean core
+integration** white paper. Treat the corpus
 as the source of truth for *SAP's documented position*, not as live product state. See
 `references/knowledge-map.md` for the community map, god nodes, and a topic index of the source
 documents.
@@ -100,7 +101,7 @@ Tips:
   the cut nodes, re-run with a larger budget instead of answering from the partial set.
 - Note the `community=N` tag on nodes — crossing communities is often where the insight is. Resolve N
   with the **curated** community table in `references/knowledge-map.md`; do **not** use
-  `GRAPH_REPORT.md`, which numbers the *other* graph's 24 communities differently.
+  `GRAPH_REPORT.md`, which numbers the *other* graph's 32 communities differently.
 - **CLI gotcha:** `graphify --help` omits `query` and `affected`, but both exist and work (verified on
   0.9.29). Don't "fix" this skill by deleting them.
 

@@ -3,9 +3,11 @@
 Orientation for picking good query anchors. Node labels here are the **exact labels** to pass to
 `graphify explain "<label>" --graph "$GRAPH"`. Full detail: `../knowledge/clean-core-extensibility/graphify-out/GRAPH_REPORT.md`.
 
-The knowledge base now spans **all five clean-core principles** — Business Processes, Extensibility,
+The knowledge base spans **all five clean-core principles** — Business Processes, Extensibility,
 Data, Integration, Operations — plus the governance/maturity scoring model and the KPI measurement
-framework (added 2026-07 from the L200, Governance & Maturity, KPI, and Data white-paper sources).
+framework. Sources (2026-07/08): the *Clean Core Extensibility for Architects* PDF, the L200 deck,
+the Governance & Operational Practices Maturity deck, the Measurement Criteria for Clean Core KPIs
+deck, the SAP SE Clean Core Data white paper, and the **Clean core integration white paper**.
 
 ## God nodes (most connected — the core abstractions)
 
@@ -15,50 +17,63 @@ describes `graph.json`.) All labels in this file are verified to exist as exact 
 
 | Node | Edges | Use it for |
 |---|---:|---|
-| `Clean Core Integration` | 37 | The Integration principle: clean interface tech, Integration Suite, monitoring |
+| `Clean Core Integration` | 64 | The Integration principle: patterns, clean interfaces, Integration Suite, governance |
 | `Clean Core Operations` | 35 | The Operations principle: toolchain, stack currency, secure ops, agility |
-| `Clean Core Extensibility` | 30 | The Extensibility principle: on-stack / side-by-side, levels, released APIs |
-| `Clean Core Data` | 29 | The Data principle: strategy, governance, quality, volume, protection |
+| `Released SAP APIs` | 30 | What makes an extension Level A; released vs classic APIs; integration contracts |
+| `Clean Core Extensibility` | 28 | The Extensibility principle: on-stack / side-by-side, levels, released APIs |
+| `Clean Core Level A` | 28 | The compliant target level and its patterns |
 | `Clean Core Business Processes` | 27 | The Business-Processes principle: fit-to-standard, EAM/BPM/ALM |
-| `ABAP Test Cockpit` | 25 | Clean-core measurement, ATC variants, governance, AI fixes |
-| `Released SAP APIs` | 22 | What makes an extension Level A; released vs classic APIs |
-| `SAP Cloud ALM` | 22 | Operations toolchain, monitoring, RISE methodology delivery |
+| `SAP Cloud ALM` | 26 | Operations toolchain, monitoring, RISE methodology delivery |
+| `Clean Core Data` | 25 | The Data principle: strategy, governance, quality, volume, protection |
+| `ABAP Test Cockpit` | 21 | Clean-core measurement, ATC variants, governance, AI fixes |
 | `Governance and Maturity` | 20 | Governance model + maturity scoring across the five principles |
 | `Clean Core Extensibility Governance` | 19 | Extensibility governance, EXT-GOV / EXT-SYS practices |
-| `Side-by-Side Extensibility` | 17 | BTP / decoupled extension option |
-| `Data Quality` | 17 | Data-quality management, master data, get/keep data clean |
-| `Technical Debt Score` | 15 | Custom-code debt KPI, ATC-driven measurement |
-| `Clean Core Level A` | 14 | The compliant target level and its patterns |
+| `Stay Clean` / `Get Clean` | 18 | Get-clean vs stay-clean journey across principles (esp. integration) |
 
-## Communities — use the **curated** numbering (14 communities)
+## Communities — use the **curated** numbering (30 communities)
 
 > ⚠️ **Two different numberings exist. Use this table, not `GRAPH_REPORT.md`'s.**
 > The `community=N` tag printed by `graphify query`/`explain` comes from `graph.curated.json` (the graph
-> the skill queries), which has **14** communities. `GRAPH_REPORT.md` describes `graph.json` and its
-> **24** communities under *different numbers* — e.g. curated `community=1` is **Clean Core Data**, while
-> `GRAPH_REPORT`'s community 1 is "Extensibility Model & Levels". Never translate a `community=N` tag
-> through the report.
+> the skill queries), which has **30** communities. `GRAPH_REPORT.md` describes `graph.json` and its
+> **32** communities under *different numbers*. Never translate a `community=N` tag through the report.
+> When in doubt, `graphify explain "<label>"` reports the definitive community for a specific node.
 
 | N | Theme (curated) | Nodes | Highest-degree members |
 |---:|---|---:|---|
-| 0 | **Extensibility Governance & ATC Measurement** | 69 | Clean Core Extensibility, ABAP Test Cockpit, Clean Core Extensibility Governance, Technical Debt Score, RISE with SAP Methodology Dashboard |
-| 1 | **Clean Core Data — volume, products, indices** | 58 | Clean Core Data, SAP Business Data Cloud, Data Volume Efficiency, Data Volume Improvement Potential, Data Quality Index |
-| 2 | **Extensibility Model & Levels A/B/C/D** | 58 | Side-by-Side Extensibility, Clean Core Level A, SAP Build, Clean Core Level B, Clean Core Level C |
-| 3 | **Clean Business Processes & Toolchain** | 51 | Clean Core Business Processes, SAP Cloud ALM, End-to-End Toolchain, agile delivery / operational excellence |
-| 4 | **Clean Integration** | 42 | Clean Core Integration, SAP BTP, SAP Integration Suite, SAP Readiness Check, Usage of Clean Interface Technologies |
-| 5 | **Governance & Maturity Scoring** | 37 | Governance and Maturity, Clean Core Measurement Framework, RISE with SAP Methodology, Solution Standardization Board, Clean Core Maturity Rating Scale |
-| 6 | **Brownfield Debt Reduction & AI Custom-Code Modernization** | 30 | Technical Debt Reduction, S/4HANA Custom Code Migration Agent, SAP Fiori Adoption, Post-Conversion Retire/Renovate/Innovate, Joule Studio |
-| 7 | **Released APIs, AEM & Extension Process** | 30 | Released SAP APIs, Extension End-to-End Process, Extension Deployment, SAP Application Extension Methodology, EXT-GOV-02 |
-| 8 | **Key User Extensibility Toolset** | 29 | Custom Fields App, Custom CDS Views App, OData Services, Core Data Services, Custom Business Objects App |
-| 9 | **Clean Operations** | 29 | Clean Core Operations, SAP S/4HANA Cloud, Age of Feature Pack Stack, Age of Support Package Stack, SAP Early Watch Alert |
-| 10 | **Data Quality & Clean Data Foundation / AI** | 24 | Data Quality, Clean Core Data Foundation, Data Quality Management, SAP Business AI, Custom Code Assistant |
-| 11 | **UI Extension Building Blocks** | 7 | Create Custom UI Extension Task, Extension Architecture Guide, SAP Fiori Elements, SAPUI5, SAP Mobile Services |
-| 12 | **Data Tiering & Temperature** | 5 | Data Tiering, Hot / Warm / Cold Data, SAP HANA Native Storage Extension |
-| 13 | **Business AI Advisory** | 2 | SAP Business AI Advisory, SAP Business AI Activation Advisory |
+| 0 | **Extensibility Debt & KPIs** | 58 | Clean Core Extensibility, Technical Debt Score, RISE with SAP Methodology Dashboard, Technical Debt Reduction, Clean Core Share |
+| 1 | **ABAP Cloud & ATC Governance** | 46 | ABAP Test Cockpit, Clean Core Extensibility Governance, SAP BTP, ABAP Cloud |
+| 2 | **Clean Operations & Toolchain** | 46 | Clean Core Operations, Integrated Toolchain Adoption, End-to-End Toolchain, agile delivery, SAP S/4HANA Cloud |
+| 3 | **Clean Business Processes & Fit-to-Standard** | 41 | Clean Core Business Processes, SAP Cloud ALM, SAP Readiness Check, Five Clean Core Principles |
+| 4 | **Key User Extensibility Toolset** | 32 | Custom Fields App, OData Services, Custom CDS Views App, SAP Fiori Adoption, Core Data Services |
+| 5 | **Governance & Maturity Scoring** | 32 | Governance and Maturity, Clean Core Measurement Framework, Solution Standardization Board, Maturity Rating Scale |
+| 6 | **Clean Core Integration hub / Get-&-Stay-Clean** | 26 | Clean Core Integration, Stay Clean, Get Clean, Center of Excellence, SAP LeanIX |
+| 7 | **Released APIs & Integration Readiness** | 21 | Released SAP APIs, SAP Business Accelerator Hub, INT-08 SAP S/4HANA Integration Readiness, SAP API Policy |
+| 8 | **Wrappers, Level C & ATC Exemptions** | 18 | Clean Core Level C, ATC Exemptions, ABAP Cloud Wrappers, Custom Wrappers, Partner Clean Core Certification |
+| 9 | **Data Quality & Master Data** | 18 | Data Quality, SAP Master Data Governance, Master Data Management, Data Quality Management |
+| 10 | **Business AI & Custom-Code Modernization** | 17 | S/4HANA Custom Code Migration Agent, Joule Studio, AI-Generated Fix Proposals, Customer-Built AI |
+| 11 | **Integration Suite & Middleware** | 16 | SAP Integration Suite, SAP Application Interface Framework, API-Managed Connectivity, Central Middleware |
+| 12 | **Data Volume Efficiency** | 15 | Data Volume Improvement Potential, Data Volume Efficiency, Clean Core Data Strategy, Outdated Data |
+| 13 | **Clean Core Data & Governance** | 15 | Clean Core Data, Data Governance, SAP Information Lifecycle Management, DAT-01 Data Strategy Setup |
+| 14 | **Event-Driven Integration** | 13 | Event-Driven Architecture, Business Events, INT-03 Integration Landscape, Advanced Event Mesh, Contract-Based Integration |
+| 15 | **Level A & Modification Avoidance** | 13 | Clean Core Level A, Modifications/Clones/Implicit Enhancements, User and Customer Exits, BTP First Strategy |
+| 16 | **Side-by-Side & SAP Build** | 13 | Side-by-Side Extensibility, SAP Build, SAP Build Code, SAP BTP ABAP Environment |
+| 17 | **Extensibility Options (Key User / Dev / On-stack)** | 11 | Key User Extensibility, On-Stack Extensibility, Developer Extensibility, EXT-GOV-02 |
+| 18 | **Data Strategy & Data Products** | 11 | Data Strategy, DAT-02 Data Governance Setup, Data Product, Data Product Economy, SAP One Domain Model |
+| 19 | **Modern Data & Integration Tech** | 9 | SAP Business Data Cloud, Usage of Clean Interface Technologies, SAP Datasphere, Innovation Adoption |
+| 20 | **AEM (Application Extension Methodology)** | 8 | SAP Application Extension Methodology, Extension Technology Mapping, Extension Architecture |
+| 21 | **Data Protection & Compliance** | 8 | Data Protection, SAP Data Privacy Integration, Data Masking and Anonymization, Regulatory Compliance |
+| 22 | **Integration Governance (ISA-M / ICoE)** | 8 | SAP Integration Solution Advisory Methodology, SAP Integration Assessment, Integration Center of Excellence, Decision Logging |
+| 23 | **Integration Design Guidelines** | 7 | Integration Design Guidelines, Loose Coupling and API-First Design, Provider/Consumer Model, Graceful Error Handling |
+| 24 | **Legacy Interfaces & Modernization** | 6 | Modernization Recommendations, API-Managed Protocols, IDoc, RFC, SOAP |
+| 25 | **ABAP Cloud vs Classic Model** | 5 | ABAP Cloud Development Model, Clean Core Extensibility Model Level A, Classic ABAP Development Model, I_PRODUCT CDS View |
+| 26 | **Applications-Data-AI Flywheel** | 5 | SAP Business AI, Clean Core Data Foundation, Joule, Applications-Data-AI Flywheel |
+| 27 | **Data Quality Index (by domain)** | 5 | Data Quality Index, FI Data Quality, Business Partner Data Quality, Material Master Data Quality |
+| 28 | **Data Tiering & Temperature** | 5 | Data Tiering, Warm/Hot/Cold Data, SAP HANA Native Storage Extension |
+| 29 | **Business AI Advisory** | 2 | SAP Business AI Advisory, SAP Business AI Activation Advisory |
 
-Sizes total 471 ✓. `GRAPH_REPORT.md`'s finer 24-community split (incl. thin hubs like Data Governance,
-Governance Boards, Data Quality Index, RAP Model) is still useful as a **thematic** inventory — just not
-for resolving a `community=N` tag.
+Sizes total 530 ✓. The Integration principle spans several hubs (6, 11, 14, 22, 23, 24) — start from
+`Clean Core Integration` and follow edges. `GRAPH_REPORT.md`'s finer 32-community split is a useful
+**thematic** inventory, but never resolve a `community=N` tag through it.
 
 ## Hyperedges (multi-node patterns — cite these for "how does the whole X work")
 
@@ -69,12 +84,18 @@ for resolving a `community=N` tag.
 - Per-principle practice sets: **Clean Core Business Processes / Extensibility Governance / Extensibility System Setup / Data / Integration / Operations Practices** (the PRO/EXT/DAT/INT/OPS operational practices)
 - Per-principle KPI sets: **Extensibility KPI Set**, **Clean Integration KPIs**, **Data Volume Efficiency KPIs**, **Adopt Clean Core Requirements Indices**
 
+**Integration dimension**
+- **Three clean core integration architectural patterns** — Central Middleware + API-Managed Connectivity + Event-Driven Architecture
+- **Clean core integration governance model** — ISA-M + Integration Center of Excellence + Solution Standardization Board + SAP Integration Assessment
+- **Core qualities of enterprise-grade integration flows** — Loose Coupling / API-First Design + Graceful Error Handling + Integration Design Guidelines
+- **Agent-led toolchain** — SAP Signavio + SAP LeanIX + SAP Integration Suite + SAP Cloud ALM
+
 **Data dimension**
 - **Five Pillars of Clean Core Data** — Data Strategy / Governance / Quality / Volume Efficiency / Protection
 - **Six Data Quality Dimensions** and the **Data Quality Index** composition
 - **Clean Core Data Foundation** — foundation + culture + Applications-Data-AI flywheel
 
-**Extensibility dimension (existing)**
+**Extensibility dimension**
 - **Clean Core Level Model Forms A/B/C/D** — the level concept + all four levels
 - **Level A Clean Extension Pattern** — Level A + ABAP Cloud model + SAP Build + Released APIs + on-stack + side-by-side
 - **Wrapper Access Pattern for Non-Released Objects** — wrappers + non-released objects + ATC exemptions + levels B/C/D
@@ -117,10 +138,11 @@ cited by a node's `src=` for exact wording. Decks are cited by **Slide N**, PDFs
 | `726-750`, `751-775`, `776-800` | Resources and references |
 | `801-825` … `926-927` | Appendix: Key User deep-dive and details |
 
-### 2026-07 additions (decks cited by Slide N; white paper by PDF page)
+### 2026-07/08 additions (decks cited by Slide N; white papers by PDF page)
 | Prefix / range | Source & topic |
 |---|---|
 | `l200-001-020`, `l200-021-039` | **Clean Core L200** deck — the five principles at first level of detail (Why/What/How) |
 | `govops-001-025` … `govops-101-110` | **Governance & Operational Practices Maturity** deck — governance model, Maturity Rating Scale (0–5), PRO/DAT/INT/OPS practices |
 | `kpi-001-025` … `kpi-076-095` | **Measurement Criteria for Clean Core KPIs** deck — measurement framework, recommended KPIs per principle + how to assess |
 | `wp-001-015`, `wp-016-028` | **SAP SE Clean Core Data white paper** — data strategy, governance, quality, volume, protection |
+| `int-001-025`, `int-026-049` | **Clean core integration white paper** — clean-integration principles, the three architecture patterns (middleware / API-managed / event-driven), API contracts (C0–C2), integration governance (ISA-M, ICoE, SSB), toolchain, and legacy-interface modernization |
