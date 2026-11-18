@@ -2,6 +2,28 @@
 
 All notable changes to the SAP Clean Core Expert plugin.
 
+## 0.3.1 — Clean Core Levels B and D, curation contract
+
+### Fixed
+
+- **Level B and Level D had no node.** `graphify explain "Clean Core Level B"` found nothing, while
+  three hyperedges cited both levels. The two nodes and their 20 `EXTRACTED` links are restored from
+  the companion skill's extensibility graph (same graphify extraction of the same PDF); they sit in
+  curated community 8, now *Wrappers, Levels B/C/D & ATC Exemptions*.
+- Duplicate label "Clean Core Levels A, B, C, D": `clean_core_levels_a_b_c_d` merged into
+  `clean_core_levels` (seventh alias merge).
+- `clean_integration` was listed as an alias of `clean_core_integration` while still being a node; the
+  stale alias entry is removed.
+- `graph.curated.json` now declares `graph.curation_version: 1`, so it passes the companion skill's
+  graph contract check (`scripts/ci/check-clean-core-skills.mjs` in `Raistlin82/arc-1-fork`).
+
+### Changed
+
+- Curated graph **530 → 531 nodes / 1042 → 1062 links**; communities (30) and hyperedges (41)
+  unchanged. Link confidence: 935 EXTRACTED · 124 INFERRED · 3 CURATED. `graph.json` is unchanged.
+- `knowledge-map.md`: community sizes (6: 25, 8: 20), ATC degree 24, and SAP's level naming (A, B
+  *Clean Core*; C *Conditional Clean Core*; D *Not Clean Core*) with its SAP Help source.
+
 ## 0.3.0 — Clean Core Integration white paper
 
 ### Added

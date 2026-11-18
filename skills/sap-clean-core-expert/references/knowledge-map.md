@@ -25,7 +25,7 @@ describes `graph.json`.) All labels in this file are verified to exist as exact 
 | `Clean Core Business Processes` | 27 | The Business-Processes principle: fit-to-standard, EAM/BPM/ALM |
 | `SAP Cloud ALM` | 26 | Operations toolchain, monitoring, RISE methodology delivery |
 | `Clean Core Data` | 25 | The Data principle: strategy, governance, quality, volume, protection |
-| `ABAP Test Cockpit` | 21 | Clean-core measurement, ATC variants, governance, AI fixes |
+| `ABAP Test Cockpit` | 24 | Clean-core measurement, ATC variants, governance, AI fixes |
 | `Governance and Maturity` | 20 | Governance model + maturity scoring across the five principles |
 | `Clean Core Extensibility Governance` | 19 | Extensibility governance, EXT-GOV / EXT-SYS practices |
 | `Stay Clean` / `Get Clean` | 18 | Get-clean vs stay-clean journey across principles (esp. integration) |
@@ -46,9 +46,9 @@ describes `graph.json`.) All labels in this file are verified to exist as exact 
 | 3 | **Clean Business Processes & Fit-to-Standard** | 41 | Clean Core Business Processes, SAP Cloud ALM, SAP Readiness Check, Five Clean Core Principles |
 | 4 | **Key User Extensibility Toolset** | 32 | Custom Fields App, OData Services, Custom CDS Views App, SAP Fiori Adoption, Core Data Services |
 | 5 | **Governance & Maturity Scoring** | 32 | Governance and Maturity, Clean Core Measurement Framework, Solution Standardization Board, Maturity Rating Scale |
-| 6 | **Clean Core Integration hub / Get-&-Stay-Clean** | 26 | Clean Core Integration, Stay Clean, Get Clean, Center of Excellence, SAP LeanIX |
+| 6 | **Clean Core Integration hub / Get-&-Stay-Clean** | 25 | Clean Core Integration, Stay Clean, Get Clean, Center of Excellence, SAP LeanIX |
 | 7 | **Released APIs & Integration Readiness** | 21 | Released SAP APIs, SAP Business Accelerator Hub, INT-08 SAP S/4HANA Integration Readiness, SAP API Policy |
-| 8 | **Wrappers, Level C & ATC Exemptions** | 18 | Clean Core Level C, ATC Exemptions, ABAP Cloud Wrappers, Custom Wrappers, Partner Clean Core Certification |
+| 8 | **Wrappers, Levels B/C/D & ATC Exemptions** | 20 | Clean Core Level C, ATC Exemptions, Clean Core Level B, ABAP Cloud Wrappers, Clean Core Level D |
 | 9 | **Data Quality & Master Data** | 18 | Data Quality, SAP Master Data Governance, Master Data Management, Data Quality Management |
 | 10 | **Business AI & Custom-Code Modernization** | 17 | S/4HANA Custom Code Migration Agent, Joule Studio, AI-Generated Fix Proposals, Customer-Built AI |
 | 11 | **Integration Suite & Middleware** | 16 | SAP Integration Suite, SAP Application Interface Framework, API-Managed Connectivity, Central Middleware |
@@ -71,7 +71,7 @@ describes `graph.json`.) All labels in this file are verified to exist as exact 
 | 28 | **Data Tiering & Temperature** | 5 | Data Tiering, Warm/Hot/Cold Data, SAP HANA Native Storage Extension |
 | 29 | **Business AI Advisory** | 2 | SAP Business AI Advisory, SAP Business AI Activation Advisory |
 
-Sizes total 530 ✓. The Integration principle spans several hubs (6, 11, 14, 22, 23, 24) — start from
+Sizes total 531 ✓. The Integration principle spans several hubs (6, 11, 14, 22, 23, 24) — start from
 `Clean Core Integration` and follow edges. `GRAPH_REPORT.md`'s finer 32-community split is a useful
 **thematic** inventory, but never resolve a `community=N` tag through it.
 
@@ -96,7 +96,11 @@ Sizes total 530 ✓. The Integration principle spans several hubs (6, 11, 14, 22
 - **Clean Core Data Foundation** — foundation + culture + Applications-Data-AI flywheel
 
 **Extensibility dimension**
-- **Clean Core Level Model Forms A/B/C/D** — the level concept + all four levels
+- **Clean Core Level Model Forms A/B/C/D** — the level concept + all four levels. SAP's naming: A and B
+  are *Clean Core*, C is *Conditional Clean Core* (internal SAP objects; conditionally clean with the
+  changelog for SAP objects), D is *Not Clean Core* — SAP Cloud ALM, *Extensibility*,
+  https://help.sap.com/docs/CloudALM/877c96cf971648b09ee0d0a64f7f4fef/eaa61d6ae6744ccdb0d18820fb8998c9.html
+  (read 2026-11-18). Never describe Level C as "not clean".
 - **Level A Clean Extension Pattern** — Level A + ABAP Cloud model + SAP Build + Released APIs + on-stack + side-by-side
 - **Wrapper Access Pattern for Non-Released Objects** — wrappers + non-released objects + ATC exemptions + levels B/C/D
 - **On-Stack Side-by-Side Selection Pattern** — decision tree + on-stack + side-by-side + Key User + Developer

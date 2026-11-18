@@ -631,7 +631,8 @@
     "confidence_score": 0.75,
     "source_file": "raw/wp-001-015-clean-core-data-white-paper.md"
    }
-  ]
+  ],
+  "curation_version": 1
  },
  "nodes": [
   {
@@ -1757,7 +1758,10 @@
    "contributor": "gabriele.rendina",
    "community": 1,
    "norm_label": "clean core levels a, b, c, d",
-   "id": "clean_core_levels"
+   "id": "clean_core_levels",
+   "alias_ids": [
+    "clean_core_levels_a_b_c_d"
+   ]
   },
   {
    "label": "Usage of APIs Check",
@@ -4485,7 +4489,6 @@
    "rationale": "Principle 4: keep the landscape reliable and flexible. Assessed via nine Integration practices (INT-01 to INT-09).",
    "community": 6,
    "alias_ids": [
-    "clean_integration",
     "integration"
    ],
    "id": "clean_core_integration"
@@ -7313,19 +7316,6 @@
    "norm_label": "toolchain adoption"
   },
   {
-   "label": "Clean Core Levels A, B, C, D",
-   "file_type": "concept",
-   "source_file": "raw/int-001-025-clean-core-integration.md",
-   "source_location": "PDF page 9",
-   "source_url": "sources/Clean core integration.pdf",
-   "captured_at": null,
-   "author": "SAP",
-   "contributor": "gabriele.rendina",
-   "id": "clean_core_levels_a_b_c_d",
-   "community": 6,
-   "norm_label": "clean core levels a, b, c, d"
-  },
-  {
    "label": "API Policy",
    "file_type": "concept",
    "source_file": "raw/int-026-049-clean-core-integration.md",
@@ -7779,6 +7769,32 @@
    "id": "integration_expert_enablement",
    "community": 6,
    "norm_label": "integration expert enablement"
+  },
+  {
+   "label": "Clean Core Level B",
+   "file_type": "document",
+   "source_file": "raw/026-050-introduction-clean-core-principles.md",
+   "source_location": "PDF page 42",
+   "source_url": "sources/clean-core-extensibility-for-architects-2026-07.pdf",
+   "captured_at": "2026-07-13T20:47:18.456697+00:00",
+   "author": "SAP",
+   "contributor": "gabriele.rendina",
+   "community": 8,
+   "norm_label": "clean core level b",
+   "id": "clean_core_level_b"
+  },
+  {
+   "label": "Clean Core Level D",
+   "file_type": "document",
+   "source_file": "raw/026-050-introduction-clean-core-principles.md",
+   "source_location": "PDF page 47",
+   "source_url": "sources/clean-core-extensibility-for-architects-2026-07.pdf",
+   "captured_at": "2026-07-13T20:47:18.456697+00:00",
+   "author": "SAP",
+   "contributor": "gabriele.rendina",
+   "community": 8,
+   "norm_label": "clean core level d",
+   "id": "clean_core_level_d"
   }
  ],
  "links": [
@@ -8460,7 +8476,7 @@
    "source_location": "PDF page 9",
    "weight": 1.0,
    "source": "clean_core_level_a",
-   "target": "clean_core_levels_a_b_c_d"
+   "target": "clean_core_levels"
   },
   {
    "relation": "references",
@@ -10020,7 +10036,7 @@
    "source_location": "PDF page 9",
    "weight": 1.0,
    "source": "sap_note_3690029",
-   "target": "clean_core_levels_a_b_c_d"
+   "target": "clean_core_levels"
   },
   {
    "relation": "references",
@@ -15830,7 +15846,7 @@
    "source_location": "PDF page 9",
    "weight": 1.0,
    "source": "clean_core_integration",
-   "target": "clean_core_levels_a_b_c_d"
+   "target": "clean_core_levels"
   },
   {
    "relation": "supports",
@@ -18201,6 +18217,206 @@
    "weight": 1.0,
    "source": "sap_cloud_erp_private_advisory",
    "target": "clean_core_extensibility_governance"
+  },
+  {
+   "source": "clean_core_level_concept",
+   "target": "clean_core_level_b",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/026-050-introduction-clean-core-principles.md",
+   "source_location": "PDF page 31",
+   "weight": 1
+  },
+  {
+   "source": "clean_core_level_concept",
+   "target": "clean_core_level_d",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/026-050-introduction-clean-core-principles.md",
+   "source_location": "PDF page 31",
+   "weight": 1
+  },
+  {
+   "source": "clean_core_level_b",
+   "target": "classic_abap_development_model",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/026-050-introduction-clean-core-principles.md",
+   "source_location": "PDF page 42",
+   "weight": 1
+  },
+  {
+   "source": "clean_core_level_b",
+   "target": "cloudification_repository",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/026-050-introduction-clean-core-principles.md",
+   "source_location": "PDF page 42",
+   "weight": 1
+  },
+  {
+   "source": "clean_core_level_b",
+   "target": "abap_test_cockpit",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/026-050-introduction-clean-core-principles.md",
+   "source_location": "PDF page 42",
+   "weight": 1
+  },
+  {
+   "source": "sap_note_3589866",
+   "target": "clean_core_level_b",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/051-075-clean-core-levels-a-b-c-d.md",
+   "source_location": "PDF page 66",
+   "weight": 1
+  },
+  {
+   "source": "abap_cloud_wrappers",
+   "target": "clean_core_level_b",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/176-200-released-apis-and-wrappers.md",
+   "source_location": "PDF page 198",
+   "weight": 1
+  },
+  {
+   "source": "custom_code_use_cases",
+   "target": "clean_core_level_b",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/051-075-clean-core-levels-a-b-c-d.md",
+   "source_location": "PDF pages 63-64",
+   "weight": 1
+  },
+  {
+   "source": "partner_clean_core_certification",
+   "target": "clean_core_level_b",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/201-225-released-apis-and-wrappers.md",
+   "source_location": "PDF pages 210-211",
+   "weight": 1
+  },
+  {
+   "source": "clean_extensibility_levels",
+   "target": "clean_core_level_b",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/576-600-custom-code-transition-atc.md",
+   "source_location": "PDF page 577",
+   "weight": 1
+  },
+  {
+   "source": "clean_core_level_b",
+   "target": "classic_sap_apis",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/576-600-custom-code-transition-atc.md",
+   "source_location": "PDF page 577",
+   "weight": 1
+  },
+  {
+   "source": "atc_exemptions",
+   "target": "clean_core_level_b",
+   "relation": "conceptually_related_to",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/551-575-custom-code-transition-atc.md",
+   "source_location": "PDF page 572",
+   "weight": 1
+  },
+  {
+   "source": "clean_core_level_d",
+   "target": "not_recommended_sap_objects",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/026-050-introduction-clean-core-principles.md",
+   "source_location": "PDF page 47",
+   "weight": 1
+  },
+  {
+   "source": "clean_core_level_d",
+   "target": "abap_test_cockpit",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/026-050-introduction-clean-core-principles.md",
+   "source_location": "PDF page 47",
+   "weight": 1
+  },
+  {
+   "source": "abap_cloud_wrappers",
+   "target": "clean_core_level_d",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/176-200-released-apis-and-wrappers.md",
+   "source_location": "PDF page 198",
+   "weight": 1
+  },
+  {
+   "source": "custom_code_use_cases",
+   "target": "clean_core_level_d",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/051-075-clean-core-levels-a-b-c-d.md",
+   "source_location": "PDF page 65",
+   "weight": 1
+  },
+  {
+   "source": "clean_extensibility_levels",
+   "target": "clean_core_level_d",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/576-600-custom-code-transition-atc.md",
+   "source_location": "PDF page 577",
+   "weight": 1
+  },
+  {
+   "source": "clean_core_level_d",
+   "target": "not_recommended_sap_objects_and_technologies",
+   "relation": "references",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/576-600-custom-code-transition-atc.md",
+   "source_location": "PDF page 577",
+   "weight": 1
+  },
+  {
+   "source": "atc_exemptions",
+   "target": "clean_core_level_d",
+   "relation": "conceptually_related_to",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/551-575-custom-code-transition-atc.md",
+   "source_location": "PDF page 572",
+   "weight": 1
+  },
+  {
+   "source": "modifications_clones_implicit_enhancements",
+   "target": "clean_core_level_d",
+   "relation": "conceptually_related_to",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1,
+   "source_file": "raw/526-550-brownfield-conversion-runbook.md",
+   "source_location": "PDF page 533",
+   "weight": 1
   }
  ],
  "hyperedges": [
